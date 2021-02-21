@@ -59,7 +59,7 @@ etc.
 
 ;; Specific face for headline stars
 (font-lock-add-keywords 'writer-mode
-             '(("^*+ " 0 `(:family "Roboto Mono"
+             '(("^*+ " 0 `(:family "JetBrains Mono"
                            :height 140
                            :foreground ,nano-color-faded) prepend)
                ) 'append)
