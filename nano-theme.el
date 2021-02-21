@@ -33,14 +33,15 @@
 (require 'nano-faces)
 
 ;; When we set a face, we take care of removing any previous settings
-(defun set-face (face style)
+(defun set-face (face style &rest args)
   "Reset FACE and make it inherit STYLE."
-  (set-face-attribute face nil
-                      :foreground 'unspecified :background 'unspecified
-                      :family     'unspecified :slant      'unspecified
-                      :weight     'unspecified :height     'unspecified
-                      :underline  'unspecified :overline   'unspecified
-                      :box        'unspecified :inherit    style))
+  (apply 'set-face-attribute face nil
+         :foreground 'unspecified :background 'unspecified
+         :family     'unspecified :slant      'unspecified
+         :weight     'unspecified :height     'unspecified
+         :underline  'unspecified :overline   'unspecified
+         :box        'unspecified :inherit    style
+         args))
 
 
 (defun nano-theme--basics ()
@@ -433,13 +434,14 @@ function is a convenience wrapper used by `describe-package-1'."
   (with-eval-after-load 'org
     (set-face 'org-archived                            'nano-face-faded)
 
-    (set-face 'org-block                                       'hl-line)
-    (set-face 'org-block-begin-line                    'nano-face-faded)
-    (set-face 'org-block-end-line                      'nano-face-faded)
-    (unless (version< emacs-version "27.0")
-      (set-face-attribute 'org-block nil                      :extend t)
-      (set-face-attribute 'org-block-begin-line nil           :extend t)
-      (set-face-attribute 'org-block-end-line nil             :extend t))
+    (set-face 'org-block                                       'hl-line
+              :extend t)
+    (set-face 'org-block-begin-line                    'nano-face-faded
+              :background nano-color-subtle
+              :extend t)
+    (set-face 'org-block-end-line                      'nano-face-faded
+              :background nano-color-subtle
+              :extend t)
 
     (set-face 'org-checkbox                            'nano-face-faded)
     (set-face 'org-checkbox-statistics-done            'nano-face-faded)
@@ -463,10 +465,14 @@ function is a convenience wrapper used by `describe-package-1'."
     ;; (set-face 'org-hide                             'nano-face-faded)
     ;; (set-face 'org-indent                           'nano-face-faded)
     (set-face 'org-latex-and-related                   'nano-face-faded)
-    (set-face 'org-level-1                            'nano-face-strong)
-    (set-face 'org-level-2                            'nano-face-strong)
-    (set-face 'org-level-3                            'nano-face-strong)
-    (set-face 'org-level-4                            'nano-face-strong)
+    (set-face 'org-level-1                            'nano-face-strong
+              :weight 'light :height 1.875)
+    (set-face 'org-level-2                            'nano-face-strong
+              :weight 'light :height 1.3125)
+    (set-face 'org-level-3                            'nano-face-strong
+              :weight 'medium :height 1.0)
+    (set-face 'org-level-4                            'nano-face-strong
+              :weight 'normal :height 1.0)
     (set-face 'org-level-5                            'nano-face-strong)
     (set-face 'org-level-6                            'nano-face-strong)
     (set-face 'org-level-7                            'nano-face-strong)

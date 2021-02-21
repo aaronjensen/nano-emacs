@@ -22,7 +22,7 @@
   (setq frame-background-mode    'light)
   (setq nano-color-foreground "#1F2937") ;; Cool Gray 800
   (setq nano-color-background "#FFFFFF") ;; White
-  (setq nano-color-highlight  "#FAFAFA") ;; Very Light Grey
+  (setq nano-color-highlight  "#F9FAFB") ;; Cool Gray 50
   (setq nano-color-critical   "#FF6F00") ;; Amber / L900
   (setq nano-color-salient    "#673AB7") ;; Deep Purple / L500
   (setq nano-color-strong     "#000000") ;; Black
