@@ -106,7 +106,10 @@
   (set-face-attribute 'tooltip nil                         :height 0.85)
   (set-face 'secondary-selection                      'nano-face-subtle)
   (set-face 'completions-common-part                   'nano-face-faded)
-  (set-face 'completions-first-difference            'nano-face-default))
+  (set-face 'completions-first-difference            'nano-face-default)
+  (set-face-attribute 'child-frame-border nil
+                      :background "#E5E7EB"))
+
 (defun nano-theme--font-lock ()
   "Derive font-lock faces from nano-faces."
   (set-face 'font-lock-comment-face                    'nano-face-faded)
