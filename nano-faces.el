@@ -82,35 +82,35 @@ background color that is barely perceptible."
   :group 'nano)
 
 (defface nano-face-header-default nil
-  "Default face for ther header line."
+  "Default face for the header line."
   :group 'nano)
 
 (defface nano-face-header-critical nil
-  "Critical face for ther header line."
+  "Critical face for the header line."
   :group 'nano)
 
 (defface nano-face-header-popout nil
-  "Popout face for ther header line."
+  "Popout face for the header line."
   :group 'nano)
 
 (defface nano-face-header-strong nil
-  "Strong face for ther header line."
+  "Strong face for the header line."
   :group 'nano)
 
 (defface nano-face-header-salient nil
-  "Salient face for ther header line."
+  "Salient face for the header line."
   :group 'nano)
 
 (defface nano-face-header-faded nil
-  "Faded face for ther header line."
+  "Faded face for the header line."
   :group 'nano)
 
 (defface nano-face-header-subtle nil
-  "Subtle face for ther header line."
+  "Subtle face for the header line."
   :group 'nano)
 
 (defface nano-face-header-highlight nil
-  "Highlight face for ther header line."
+  "Highlight face for the header line."
   :group 'nano)
 
 (defface nano-face-header-separator nil
@@ -159,7 +159,8 @@ background color that is barely perceptible."
   "Derive face attributes for nano-faces using nano-theme values."
   (set-face-attribute 'nano-face-default nil
                       :foreground nano-color-foreground
-                      :background nano-color-background)
+                      :background nano-color-background
+                      :weight 'normal)
   (set-face-attribute 'nano-face-critical nil
                       :foreground nano-color-foreground
                       :background nano-color-critical)
@@ -168,9 +169,9 @@ background color that is barely perceptible."
 
   (if (display-graphic-p)
       (set-face-attribute 'nano-face-strong nil
-                          :foreground (face-foreground 'nano-face-default)
+                          :foreground nano-color-bold
                           :family "JetBrains Mono"
-                          :weight 'medium)
+                          :weight 'bold)
     (set-face-attribute 'nano-face-strong nil
                         :foreground (face-foreground 'nano-face-default)
                         :weight 'bold))

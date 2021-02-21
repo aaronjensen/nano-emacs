@@ -552,6 +552,11 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'company-tooltip-annotation                                    'nano-face-default)
     (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
 
+(defun nano-theme--dired ()
+  "Derive dired faces from nano faces."
+  (with-eval-after-load 'dired
+    (set-face 'dired-directory                   'nano-face-strong)))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -574,6 +579,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--deft)
   (nano-theme--markdown)
   (nano-theme--hl-line)
-  (nano-theme--company))
+  (nano-theme--company)
+  (nano-theme--dired))
 
 (provide 'nano-theme)
