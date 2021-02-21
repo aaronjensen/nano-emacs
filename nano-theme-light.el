@@ -18,17 +18,17 @@
 (require 'nano-base-colors)
 (defun nano-theme-set-light ()
   "Apply light Nano theme base."
-  ;; Colors from Material design at https://material.io/
+  ;; Colors from Tailwind https://tailwindcss.com/docs/customizing-colors
   (setq frame-background-mode    'light)
-  (setq nano-color-foreground "#37474F") ;; Blue Grey / L800
+  (setq nano-color-foreground "#1F2937") ;; Cool Gray 800
   (setq nano-color-background "#FFFFFF") ;; White
   (setq nano-color-highlight  "#FAFAFA") ;; Very Light Grey
   (setq nano-color-critical   "#FF6F00") ;; Amber / L900
   (setq nano-color-salient    "#673AB7") ;; Deep Purple / L500
   (setq nano-color-strong     "#000000") ;; Black
-  (setq nano-color-popout     "#FFAB91") ;; Deep Orange / L200
+  (setq nano-color-popout     "#0369A1") ;; Deep Orange / L200
   (setq nano-color-subtle     "#ECEFF1") ;; Blue Grey / L50
-  (setq nano-color-faded      "#B0BEC5") ;; Blue Grey / L200
+  (setq nano-color-faded      "#6B7280") ;; Cool Gray 600
   )
 (nano-theme-set-light)
 
