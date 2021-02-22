@@ -553,6 +553,11 @@ function is a convenience wrapper used by `describe-package-1'."
   (with-eval-after-load 'dired
     (set-face 'dired-directory                   'nano-face-strong)))
 
+(defun nano-theme--enh-ruby-mode ()
+  "Derive enh-ruby-mode faces from nano faces."
+  (with-eval-after-load 'enh-ruby-mode
+    (set-face 'enh-ruby-string-delimiter-face 'font-lock-string-face)))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
