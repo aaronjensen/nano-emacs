@@ -108,7 +108,7 @@
   (set-face 'completions-common-part                   'nano-face-faded)
   (set-face 'completions-first-difference            'nano-face-default)
   (set-face-attribute 'child-frame-border nil
-                      :background "#E5E7EB"))
+                      :background "#A1A1AA"))
 
 (defun nano-theme--font-lock ()
   "Derive font-lock faces from nano-faces."
