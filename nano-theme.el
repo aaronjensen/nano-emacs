@@ -158,20 +158,6 @@
                                           :style nil)
                        :inherit nil)
 
-  ;; (when (not (display-graphic-p))
-  ;;   (set-face-attribute 'header-line nil
-  ;;                    :weight 'light
-  ;;                       :foreground (face-foreground 'nano-face-default)
-  ;;                       :background (face-background 'nano-face-subtle)
-  ;;                       :inverse-video t
-  ;;                       :overline nil
-  ;;                       :underline nil
-  ;;                       :box nil
-  ;;                            :inherit nil))
-
-  ;; (set-face-attribute 'internal-border nil
-  ;;                     :background (face-foreground 'nano-face-default))
-
   (set-face-attribute 'internal-border nil
                        :background (face-background 'nano-face-default)))
 
