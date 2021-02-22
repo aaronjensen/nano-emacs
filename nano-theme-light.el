@@ -23,7 +23,7 @@
   (setq nano-color-foreground "#1F2937") ;; Cool Gray 800
   (setq nano-color-bold       "#374151") ;; Cool Gray 700
   (setq nano-color-background "#FFFFFF") ;; White
-  (setq nano-color-alt-background "#F3F4F6") ;; Cool Gray 100
+  (setq nano-color-background-alt "#F3F4F6") ;; Cool Gray 100
   (setq nano-color-highlight  "#F9FAFB") ;; Cool Gray 50
   (setq nano-color-critical   "#FF6F00") ;; Amber / L900
   (setq nano-color-salient    "#673AB7") ;; Deep Purple / L500
