@@ -50,6 +50,25 @@
       (setq output (concat "…/" output)))
     output))
 
+(defun nano-modeline--top-left-p ()
+  (let ((edges (window-edges)))
+    (and (<= (car edges) 1)
+         (eq (cadr edges) 0))))
+
+(defun nano-modeline-persp ()
+  "Current perspective"
+  (if (nano-modeline--top-left-p)
+      (let ((name (persp-current-name))
+            (max-length 20))
+        (concat "["
+                (if (> (length name) max-length)
+                    (concat
+                     (substring name 0 (- max-length 1))
+                     "…")
+                  name)
+                "]"))
+    ""))
+
 ;; -------------------------------------------------------------------
 (defun nano-modeline-compose (status name primary secondary)
   "Compose a string with provided information"
@@ -57,31 +76,31 @@
          (window        (get-buffer-window (current-buffer)))
          (space-up       +0.15)
          (space-down     -0.20)
-	 (prefix (cond ((string= status "RO")
-			(propertize " RO " 'face 'nano-face-header-popout))
+	       (prefix (cond ((string= status "RO")
+			                  (propertize " RO " 'face 'nano-face-header-popout))
                        ((string= status "**")
-			(propertize " ** " 'face 'nano-face-header-critical))
+			                  (propertize " ** " 'face 'nano-face-header-critical))
                        ((string= status "RW")
-			(propertize " RW " 'face 'nano-face-header-faded))
+			                  (propertize " RW " 'face 'nano-face-header-faded))
                        (t (propertize status 'face 'nano-face-header-popout))))
          (left (concat
                 (propertize " "  'face 'nano-face-header-default
-			    'display `(raise ,space-up))
+			                      'display `(raise ,space-up))
                 (propertize name 'face 'nano-face-header-strong)
                 (propertize " "  'face 'nano-face-header-default
-			    'display `(raise ,space-down))
-		(propertize primary 'face 'nano-face-header-default)))
+			                      'display `(raise ,space-down))
+		            (propertize primary 'face 'nano-face-header-default)))
          (right (concat secondary " "))
          (available-width (- (window-total-width) 
-			     (length prefix) (length left) (length right)
-			     (/ (window-right-divider-width) char-width)))
-	 (available-width (max 1 available-width)))
+			                       (length prefix) (length left) (length right)
+			                       (/ (window-right-divider-width) char-width)))
+	       (available-width (max 1 available-width)))
     (concat prefix
-	    left
-	    (propertize (make-string available-width ?\ )
+	          left
+	          (propertize (make-string available-width ?\ )
                         'face 'nano-face-header-default)
-	    (propertize right 'face `(:inherit nano-face-header-default
-                                      :foreground ,nano-color-faded)))))
+	          (propertize right 'face `(:inherit nano-face-header-default
+                                               :foreground ,nano-color-faded)))))
 
 ;; ---------------------------------------------------------------------
 
@@ -302,10 +321,11 @@
 
 (defun nano-modeline-default-mode ()
     (let ((buffer-name (format-mode-line "%b"))
-          (position    (format-mode-line "%l:%c")))
+          (position    (format-mode-line "%l:%c"))
+          (persp (nano-modeline-persp)))
       (nano-modeline-compose (nano-modeline-status)
                              buffer-name
-                             ""
+                             persp
                              position)))
 
 ;; ---------------------------------------------------------------------
