@@ -209,15 +209,10 @@
 
 (defun nano-modeline-org-clock-mode ()
     (let ((buffer-name (format-mode-line "%b"))
-          (mode-name   (format-mode-line "%m"))
-          (branch      (vc-branch))
           (position    (format-mode-line "%l:%c")))
       (nano-modeline-compose (nano-modeline-status)
                              buffer-name 
-                             (concat "(" mode-name
-                                     (if branch (concat ", "
-                                             (propertize branch 'face 'italic)))
-                                     ")" )
+                             ""
                              org-mode-line-string)))
 
 ;; ---------------------------------------------------------------------
@@ -226,8 +221,6 @@
 
 (defun nano-modeline-docview-mode ()
   (let ((buffer-name (format-mode-line "%b"))
-	(mode-name   (format-mode-line "%m"))
-	(branch      (vc-branch))
 	(page-number (concat
 		      (number-to-string (doc-view-current-page)) "/"
 		      (or (ignore-errors
@@ -236,10 +229,7 @@
     (nano-modeline-compose
      (nano-modeline-status)
      buffer-name
-     (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+     ""
      page-number)))
 
 ;; ---------------------------------------------------------------------
@@ -312,15 +302,10 @@
 
 (defun nano-modeline-default-mode ()
     (let ((buffer-name (format-mode-line "%b"))
-          (mode-name   (format-mode-line "%m"))
-          (branch      (vc-branch))
           (position    (format-mode-line "%l:%c")))
       (nano-modeline-compose (nano-modeline-status)
                              buffer-name
-                             (concat "(" mode-name
-                                     (if branch (concat ", "
-                                            (propertize branch 'face 'italic)))
-                                     ")" )
+                             ""
                              position)))
 
 ;; ---------------------------------------------------------------------
