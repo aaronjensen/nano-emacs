@@ -549,12 +549,16 @@ function is a convenience wrapper used by `describe-package-1'."
 (defun nano-theme--company ()
   "Derive company tooltip window from nano faces."
   (with-eval-after-load 'company
-    (set-face 'company-tooltip-selection                   '(nano-face-strong nano-face-subtle))
-    (set-face 'company-tooltip                                               'nano-face-default)
+    (set-face 'company-tooltip-selection 'nano-face-default
+              :background nano-color-selected-background)
+    (set-face 'company-tooltip                                               'nano-face-default
+              :background nano-color-background-alt)
     (set-face 'company-scrollbar-fg                                            'nano-face-faded)
     (set-face 'company-scrollbar-bg                                          'nano-face-default)
-    (set-face 'company-tooltip-common                                        'nano-face-default)
-    (set-face 'company-tooltip-common-selection            '(nano-face-strong nano-face-subtle))
+    (set-face 'company-tooltip-common                                        'nano-face-strong
+              :background nano-color-background-alt)
+    (set-face 'company-tooltip-common-selection            'nano-face-strong
+              :background nano-color-selected-background)
     (set-face 'company-tooltip-annotation                                    'nano-face-default)
     (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
 
