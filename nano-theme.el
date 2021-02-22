@@ -112,7 +112,8 @@
 
 (defun nano-theme--font-lock ()
   "Derive font-lock faces from nano-faces."
-  (set-face 'font-lock-comment-face                    'nano-face-faded)
+  (set-face 'font-lock-comment-face                    'nano-face-faded
+            :weight 'light)
   (set-face 'font-lock-doc-face                        'nano-face-faded)
   ;; enh-ruby-mode requires that a few faces actually have :foreground set
   (set-face 'font-lock-string-face                    'nano-face-popout
