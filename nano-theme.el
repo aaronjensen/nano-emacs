@@ -68,10 +68,10 @@
   ;;(set-face 'fixed-pitch                                     'default)
   (set-face 'fixed-pitch-serif                       'nano-face-default)
   (set-face 'variable-pitch                          'nano-face-default)
-  (set-face 'cursor                                  'nano-face-default)
+  (set-face 'cursor                                  'nano-face-default
+            :foreground nano-color-background
+            :background (face-foreground 'nano-face-default))
 
-  (set-face-attribute 'cursor nil
-                      :background (face-foreground 'nano-face-default))
   (set-face-attribute 'window-divider nil
                       :foreground (face-background 'nano-face-default))
   (set-face-attribute 'window-divider-first-pixel nil
@@ -559,6 +559,11 @@ function is a convenience wrapper used by `describe-package-1'."
   (with-eval-after-load 'enh-ruby-mode
     (set-face 'enh-ruby-string-delimiter-face 'font-lock-string-face)))
 
+(defun nano-theme--evil-mc ()
+  (with-eval-after-load 'evil-mc
+    (set-face-attribute 'evil-mc-cursor-default-face nil
+                        :background nano-color-cursor-alt)))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -582,6 +587,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--markdown)
   (nano-theme--hl-line)
   (nano-theme--company)
-  (nano-theme--dired))
+  (nano-theme--dired)
+  (nano-theme--evil-mc))
 
 (provide 'nano-theme)

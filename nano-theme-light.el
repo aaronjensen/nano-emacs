@@ -31,6 +31,7 @@
   (setq nano-color-popout     "#0369A1") ;; Light Blue 700
   (setq nano-color-subtle     "#ECEFF1") ;; Blue Grey / L50
   (setq nano-color-faded      "#6B7280") ;; Cool Gray 600
+  (setq nano-color-cursor-alt "#9CA3AF") ;; Cool Gray 400
   (setq nano-color-selected-background "#BAE6FD") ;; Light Blue 200
   )
 (nano-theme-set-light)
