@@ -207,6 +207,12 @@
                          (concat "(" shell-file-name ")")
                          (shorten-directory default-directory 32)))
 
+(defun nano-modeline-vterm-mode ()
+  (nano-modeline-compose " >_ "
+                         "Terminal"
+                         ""
+                         (shorten-directory default-directory 50)))
+
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-message-mode-p ()
   (derived-mode-p 'message-mode))
@@ -351,7 +357,7 @@
            ((nano-modeline-org-agenda-mode-p)      (nano-modeline-org-agenda-mode))
            ((nano-modeline-org-clock-mode-p)       (nano-modeline-org-clock-mode))
            ((nano-modeline-term-mode-p)            (nano-modeline-term-mode))
-           ((nano-modeline-vterm-mode-p)           (nano-modeline-term-mode))
+           ((nano-modeline-vterm-mode-p)           (nano-modeline-vterm-mode))
            ((nano-modeline-text-mode-p)            (nano-modeline-default-mode))
            ((nano-modeline-pdf-view-mode-p)        (nano-modeline-pdf-view-mode))
            ((nano-modeline-docview-mode-p)         (nano-modeline-docview-mode))
