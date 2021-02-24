@@ -322,7 +322,8 @@ function is a convenience wrapper used by `describe-package-1'."
   "Derive flyspell faces from nano faces."
   (with-eval-after-load 'flyspell
     (set-face 'flyspell-duplicate                     'nano-face-popout)
-    (set-face 'flyspell-incorrect                     'nano-face-popout)))
+    (set-face 'flyspell-incorrect                     nil
+              :underline (list :color nano-color-salient :style 'wave))))
 
 
 (defun nano-theme--diff ()
