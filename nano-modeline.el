@@ -349,14 +349,18 @@
   (let ((read-only   buffer-read-only)
         (modified    (and buffer-file-name (buffer-modified-p))))
     (cond (modified  "**") (read-only "RO") (t "RW"))))
-  
+
+(defun nano-modeline-choices-p ()
+  (string= (buffer-name) "*Choices*"))
+
 ;; ---------------------------------------------------------------------
 (defun nano-modeline ()
   "Install a header line whose content is dependend on the major mode"
   (interactive)
   (setq-default header-line-format
   '((:eval
-     (cond ((nano-modeline-prog-mode-p)            (nano-modeline-default-mode))
+     (cond ((nano-modeline-choices-p)              nil)
+           ((nano-modeline-prog-mode-p)            (nano-modeline-default-mode))
            ((nano-modeline-message-mode-p)         (nano-modeline-message-mode))
            ((nano-modeline-deft-mode-p)            (nano-modeline-deft-mode))
            ((nano-modeline-info-mode-p)            (nano-modeline-info-mode))
