@@ -472,7 +472,8 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-time-grid                           'nano-face-faded)
     (set-face 'org-todo                              'nano-face-salient)
     (set-face 'org-upcoming-deadline                   'nano-face-faded)
-    (set-face 'org-verbatim                           'nano-face-popout)
+    (set-face 'org-verbatim                           nil
+              :background nano-color-background-alt)
     (set-face 'org-verse                               'nano-face-faded)
     (set-face 'org-warning                            'nano-face-popout)))
 
