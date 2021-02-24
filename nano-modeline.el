@@ -59,7 +59,7 @@
   "Current perspective"
   (if (nano-modeline--top-left-p)
       (let ((name (persp-current-name))
-            (max-length 20))
+            (max-length 32))
         (concat "["
                 (if (> (length name) max-length)
                     (concat
@@ -89,16 +89,15 @@
                 (propertize name 'face 'nano-face-header-strong)
                 (propertize " "  'face 'nano-face-header-default
 			                      'display `(raise ,space-down))
-		            (propertize primary 'face 'nano-face-header-default)))
-         (right (concat secondary " "))
-         (available-width (- (window-total-width) 
-			                       (length prefix) (length left) (length right)
-			                       (/ (window-right-divider-width) char-width)))
-	       (available-width (max 1 available-width)))
+		            (propertize primary 'face 'nano-face-header-ancillary)))
+         (right (concat secondary " ")))
     (concat prefix
 	          left
-	          (propertize (make-string available-width ?\ )
-                        'face 'nano-face-header-default)
+	          (propertize " "
+                        'face 'nano-face-header-default
+                        'display `(space :align-to
+                                         (- (+ right right-fringe right-margin)
+                                            ,(length right))))
 	          (propertize right 'face `(:inherit nano-face-header-default
                                                :foreground ,nano-color-faded)))))
 
@@ -325,14 +324,23 @@
 (defun nano-modeline-text-mode-p ()
   (derived-mode-p 'text-mode))
 
+(defun nano-buffer-name ()
+  (if buffer-file-name
+      (let ((project-root (and (fboundp 'projectile-project-root)
+                               (projectile-project-root))))
+        (if project-root
+            (file-relative-name buffer-file-name project-root)
+          (abbreviate-file-name buffer-file-name)))
+    (format-mode-line "%b")))
+
 (defun nano-modeline-default-mode ()
-    (let ((buffer-name (format-mode-line "%b"))
-          (position    (format-mode-line "%l:%c"))
-          (persp (nano-modeline-persp)))
-      (nano-modeline-compose (nano-modeline-status)
-                             buffer-name
-                             persp
-                             position)))
+  (let ((buffer-name (nano-buffer-name))
+        (position    (format-mode-line "%l:%c"))
+        (persp (nano-modeline-persp)))
+    (nano-modeline-compose (nano-modeline-status)
+                           buffer-name
+                           persp
+                           position)))
 
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-status ()

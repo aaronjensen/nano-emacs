@@ -85,6 +85,10 @@ background color that is barely perceptible."
   "Default face for the header line."
   :group 'nano)
 
+(defface nano-face-header-ancillary nil
+  "Ancillary face for the header line."
+  :group 'nano)
+
 (defface nano-face-header-critical nil
   "Critical face for the header line."
   :group 'nano)
@@ -190,6 +194,15 @@ background color that is barely perceptible."
   (set-face-attribute 'nano-face-header-default nil
                       :foreground nano-color-foreground
                       :background nano-color-subtle
+                      :box `(:line-width 1
+                                         :color ,nano-color-background
+                                         :style nil))
+
+  (set-face-attribute 'nano-face-header-ancillary nil
+                      :foreground nano-color-foreground
+                      :background nano-color-subtle
+                      :height 0.7373
+                      :weight 'medium
                       :box `(:line-width 1
                                          :color ,nano-color-background
                                          :style nil))
