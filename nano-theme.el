@@ -566,6 +566,11 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face-attribute 'evil-mc-cursor-default-face nil
                         :background nano-color-cursor-alt)))
 
+(defun nano-theme--terraform-mode ()
+  (with-eval-after-load 'terraform-mode
+    (set-face 'terraform--resource-name-face 'nano-face-popout)
+    (set-face 'terraform--resource-type-face 'nano-face-popout)))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -590,6 +595,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--hl-line)
   (nano-theme--company)
   (nano-theme--dired)
-  (nano-theme--evil-mc))
+  (nano-theme--evil-mc)
+  (nano-theme--terraform-mode))
 
 (provide 'nano-theme)
