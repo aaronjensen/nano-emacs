@@ -93,10 +93,9 @@
   (set-face 'buffer-menu-buffer                       'nano-face-strong)
   (set-face 'minibuffer-prompt                        'nano-face-strong)
   (set-face 'link                                    'nano-face-salient)
-  (set-face 'fringe                                    'nano-face-faded)
-  (set-face-attribute 'fringe nil
-                      :foreground (face-background 'nano-face-subtle)
-                      :background (face-background 'default))
+  (set-face 'fringe                                    'nano-face-faded
+            :foreground nano-color-fringe
+            :background (face-background 'default))
   (set-face 'isearch                                  'nano-face-strong)
   (set-face 'isearch-fail                              'nano-face-faded)
   (set-face 'lazy-highlight                           'nano-face-subtle)
