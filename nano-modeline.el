@@ -72,34 +72,38 @@
 ;; -------------------------------------------------------------------
 (defun nano-modeline-compose (status name primary secondary)
   "Compose a string with provided information"
-  (let* ((char-width    (window-font-width nil 'header-line))
-         (window        (get-buffer-window (current-buffer)))
-         (space-up       +0.15)
-         (space-down     -0.20)
-	       (prefix (cond ((string= status "RO")
-			                  (propertize " RO " 'face 'nano-face-header-popout))
+  (let* ((char-width (window-font-width nil 'header-line))
+         (window (get-buffer-window (current-buffer)))
+         (space-up 0.15)
+         (space-down -0.2)
+         (prefix (cond ((string= status "RO")
+                        (propertize " RO " 'face 'nano-face-header-popout))
                        ((string= status "**")
-			                  (propertize " ** " 'face 'nano-face-header-critical))
+                        (propertize " ** " 'face 'nano-face-header-critical))
                        ((string= status "RW")
-			                  (propertize " RW " 'face 'nano-face-header-faded))
+                        (propertize " RW " 'face 'nano-face-header-faded))
                        (t (propertize status 'face 'nano-face-header-popout))))
          (left (concat
-                (propertize " "  'face 'nano-face-header-default
-			                      'display `(raise ,space-up))
+                (propertize " " 'face 'nano-face-header-default
+                            'display `(raise ,space-up))
                 (propertize name 'face 'nano-face-header-strong)
-                (propertize " "  'face 'nano-face-header-default
-			                      'display `(raise ,space-down))
-		            (propertize primary 'face 'nano-face-header-ancillary)))
+                (propertize " " 'face 'nano-face-header-default
+                            'display `(raise ,space-down))
+                (propertize primary 'face 'nano-face-header-ancillary)))
          (right (concat secondary " ")))
-    (concat prefix
-	          left
-	          (propertize " "
-                        'face 'nano-face-header-default
-                        'display `(space :align-to
-                                         (- (+ right right-fringe right-margin)
-                                            ,(length right))))
-	          (propertize right 'face `(:inherit nano-face-header-default
-                                               :foreground ,nano-color-faded)))))
+    (concat
+     (propertize " "
+                 'display '(space :width (8)))
+     prefix
+     left
+     (propertize " "
+                 'face 'nano-face-header-default
+                 'display `(space :align-to
+                                  (- (+ right right-fringe right-margin)
+                                     ,(length right)
+                                     (8))))
+     (propertize right 'face `(:inherit nano-face-header-default
+                                        :foreground ,nano-color-faded)))))
 
 ;; ---------------------------------------------------------------------
 
