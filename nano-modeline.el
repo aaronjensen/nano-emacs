@@ -57,7 +57,8 @@
 
 (defun nano-modeline-persp ()
   "Current perspective"
-  (if (nano-modeline--top-left-p)
+  (if (and (nano-modeline--top-left-p)
+           persp-mode)
       (let ((name (persp-current-name))
             (max-length 32))
         (concat "["
