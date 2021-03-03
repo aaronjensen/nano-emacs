@@ -561,6 +561,9 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'enh-ruby-string-delimiter-face 'font-lock-string-face)
     (set-face-attribute 'erm-syn-errline nil
                         :box nil
+                        :underline (list :color nano-color-critical :style 'wave))
+    (set-face-attribute 'erm-syn-warnline nil
+                        :box nil
                         :underline (list :color nano-color-salient :style 'wave))))
 
 (defun nano-theme--evil-mc ()
@@ -601,6 +604,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--hl-line)
   (nano-theme--company)
   (nano-theme--dired)
+  (nano-theme--enh-ruby-mode)
   (nano-theme--evil-mc)
   (nano-theme--terraform-mode)
   (nano-theme--git-commit))
