@@ -558,6 +558,7 @@ function is a convenience wrapper used by `describe-package-1'."
 (defun nano-theme--enh-ruby-mode ()
   "Derive enh-ruby-mode faces from nano faces."
   (with-eval-after-load 'enh-ruby-mode
+    (erm-define-faces)
     (set-face 'enh-ruby-string-delimiter-face 'font-lock-string-face)
     (set-face-attribute 'erm-syn-errline nil
                         :box nil
