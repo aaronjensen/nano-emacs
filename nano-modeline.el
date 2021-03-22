@@ -25,6 +25,7 @@
 ;;
 ;; -------------------------------------------------------------------
 (require 'subr-x)
+(require 'memoize)
 
 
 ;; -------------------------------------------------------------------
@@ -329,13 +330,16 @@
 (defun nano-modeline-text-mode-p ()
   (derived-mode-p 'text-mode))
 
-(defun nano-buffer-name ()
-  (if buffer-file-name
-      (let ((project-root (and (fboundp 'projectile-project-root)
+(defmemoize nano-buffer-file-name (file-name)
+  (let ((project-root (and (fboundp 'projectile-project-root)
                                (projectile-project-root))))
         (if project-root
-            (file-relative-name buffer-file-name project-root)
-          (abbreviate-file-name buffer-file-name)))
+            (file-relative-name file-name project-root)
+          (abbreviate-file-name file-name))))
+
+(defun nano-buffer-name ()
+  (if buffer-file-name
+      (nano-buffer-file-name buffer-file-name)
     (format-mode-line "%b")))
 
 (defun nano-modeline-default-mode ()
