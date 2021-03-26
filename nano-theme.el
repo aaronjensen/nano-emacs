@@ -586,6 +586,21 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'lsp-face-highlight-read 'nano-face-default
               :underline t)))
 
+(defun nano-theme--dired-subtree ()
+  (with-eval-after-load 'dired-subtree
+    (set-face-attribute 'dired-subtree-depth-1-face nil
+                        :background nil)
+    (set-face-attribute 'dired-subtree-depth-2-face nil
+                        :background nil)
+    (set-face-attribute 'dired-subtree-depth-3-face nil
+                        :background nil)
+    (set-face-attribute 'dired-subtree-depth-4-face nil
+                        :background nil)
+    (set-face-attribute 'dired-subtree-depth-5-face nil
+                        :background nil)
+    (set-face-attribute 'dired-subtree-depth-6-face nil
+                        :background nil)))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -614,6 +629,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--evil-mc)
   (nano-theme--terraform-mode)
   (nano-theme--git-commit)
-  (nano-theme--lsp-mode))
+  (nano-theme--lsp-mode)
+  (nano-theme--dired-subtree))
 
 (provide 'nano-theme)
