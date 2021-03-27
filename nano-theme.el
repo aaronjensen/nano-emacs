@@ -601,6 +601,17 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face-attribute 'dired-subtree-depth-6-face nil
                         :background nil)))
 
+(defun nano-theme--magit-delta ()
+  (with-eval-after-load 'magit-delta
+    (set-face-attribute 'magit-diff-added-highlight nil
+              :background "#d0ffd0")
+    (set-face-attribute 'magit-diff-added nil
+              :background "#d0ffd0")
+    (set-face-attribute 'magit-diff-removed-highlight nil
+              :background "#ffe0e0")
+    (set-face-attribute 'magit-diff-removed nil
+              :background "#ffe0e0")))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -630,6 +641,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--terraform-mode)
   (nano-theme--git-commit)
   (nano-theme--lsp-mode)
-  (nano-theme--dired-subtree))
+  (nano-theme--dired-subtree)
+  (nano-theme--magit-delta))
 
 (provide 'nano-theme)
