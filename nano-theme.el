@@ -604,13 +604,15 @@ function is a convenience wrapper used by `describe-package-1'."
 (defun nano-theme--magit-delta ()
   (with-eval-after-load 'magit-delta
     (set-face-attribute 'magit-diff-added-highlight nil
-              :background "#d0ffd0")
+                        :background "#d0ffd0")
     (set-face-attribute 'magit-diff-added nil
-              :background "#d0ffd0")
+                        :background "#d0ffd0"
+                        :foreground "#234626")
     (set-face-attribute 'magit-diff-removed-highlight nil
-              :background "#ffe0e0")
+                        :background "#ffe0e0")
     (set-face-attribute 'magit-diff-removed nil
-              :background "#ffe0e0")))
+                        :background "#ffe0e0"
+                        :foreground "#5d272c")))
 
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
