@@ -19,8 +19,8 @@
 
 (setq default-frame-alist
       (append (list
-	       ;;'(font . "JetBrains Mono:style=Light:size=14")
-	       '(font . "JetBrains Mono Emacs Regular:size=14")
+	       ;;'(font . "JetBrains Mono NL:style=Light:size=14")
+	       '(font . "JetBrains Mono NL Emacs Regular:size=14")
 	       '(min-height . 1) '(height    . 45)
 	       '(min-width  . 1) '(width      . 81)
                '(vertical-scroll-bars . nil)
