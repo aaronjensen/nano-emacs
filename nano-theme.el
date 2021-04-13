@@ -547,8 +547,10 @@ function is a convenience wrapper used by `describe-package-1'."
               :background nano-color-background-alt)
     (set-face 'company-tooltip-common-selection            'nano-face-strong
               :background nano-color-selected-background)
-    (set-face 'company-tooltip-annotation                                    'nano-face-default)
-    (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
+    (set-face 'company-tooltip-annotation                                    'nano-face-default
+              :background nano-color-background-alt)
+    (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle)
+              :background nano-color-selected-background)))
 
 (defun nano-theme--dired ()
   "Derive dired faces from nano faces."
