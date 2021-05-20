@@ -106,8 +106,9 @@
   (set-face 'secondary-selection                      'nano-face-subtle)
   (set-face 'completions-common-part                   'nano-face-faded)
   (set-face 'completions-first-difference            'nano-face-default)
-  (set-face-attribute 'child-frame-border nil
-                      :background "#A1A1AA"))
+  (when (facep 'child-frame-border)
+    (set-face-attribute 'child-frame-border nil
+                       :background "#A1A1AA")))
 
 (defun nano-theme--font-lock ()
   "Derive font-lock faces from nano-faces."
