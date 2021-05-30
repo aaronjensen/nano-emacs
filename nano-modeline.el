@@ -239,7 +239,7 @@
 
 (defun nano-modeline-org-clock-mode ()
     (let ((buffer-name (format-mode-line "%b"))
-          (position    (format-mode-line "%l:%c")))
+          (position    (format-mode-line "%l")))
       (nano-modeline-compose (nano-modeline-status)
                              buffer-name 
                              ""
@@ -298,7 +298,7 @@
 (defun nano-modeline-completion-list-mode ()
     (let ((buffer-name (format-mode-line "%b"))
           (mode-name   (format-mode-line "%m"))
-          (position    (format-mode-line "%l:%c")))
+          (position    (format-mode-line "%l")))
 
       (nano-modeline-compose (nano-modeline-status)
                              buffer-name "" position)))
@@ -344,7 +344,7 @@
 
 (defun nano-modeline-default-mode ()
   (let ((buffer-name (nano-buffer-name))
-        (position    (format-mode-line "%l:%c"))
+        (position    (format-mode-line "%l"))
         (persp (nano-modeline-persp)))
     (nano-modeline-compose (nano-modeline-status)
                            buffer-name
