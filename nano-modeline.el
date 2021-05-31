@@ -71,6 +71,18 @@
                 "]"))
     ""))
 
+(defun nano-modeline-project ()
+  "Current project"
+  (let ((name (projectile-project-name))
+        (max-length 32))
+    (concat "["
+            (if (> (length name) max-length)
+                (concat
+                 (substring name 0 (- max-length 1))
+                 "…")
+              name)
+            "]")))
+
 ;; -------------------------------------------------------------------
 (defun nano-modeline-compose (status name primary secondary)
   "Compose a string with provided information"
@@ -344,11 +356,11 @@
 
 (defun nano-modeline-default-mode ()
   (let ((buffer-name (nano-buffer-name))
-        (position    (format-mode-line "%l"))
-        (persp (nano-modeline-persp)))
+        (position (format-mode-line "%l"))
+        (project (nano-modeline-project)))
     (nano-modeline-compose (nano-modeline-status)
                            buffer-name
-                           persp
+                           project
                            position)))
 
 ;; ---------------------------------------------------------------------
